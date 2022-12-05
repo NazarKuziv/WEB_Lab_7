@@ -328,3 +328,13 @@ span{
   color: #000;
   font-size: 16px;
 }
+#template{
+  font: optional;
+  font-size: 18px;
+}
+#res{
+  margin: 0;
+  position: relative;
+  font-size: 18px;
+  
+}

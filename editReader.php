@@ -55,6 +55,7 @@ function get_data(){
             $reader_name = $k['reader_name'];
             $address = $k['address'];
             $phone_number = $k['phone_number'];
+            $email = $k['email'];
             $penalty = $k['penalty'];
         }
         $data = [
@@ -62,6 +63,7 @@ function get_data(){
             'reader_name' => $reader_name,
             'address' => $address,
             'phone_number'=> $phone_number,
+            'email'=>  $email,
             'penalty'=> $penalty];
 
         return $data;
@@ -75,6 +77,7 @@ function get_data(){
             'reader_name' => '',
             'address' => '',
             'phone_number'=> '',
+            'email'=> '',
             'penalty'=> ''];
 
 
@@ -120,12 +123,15 @@ function verify_data($data){
                 if($reader){
                     $errors['phone_number'] = 'the number is already in the database';
                 }
-            }
-           
-           
+            }   
         }
-       
-       
+
+        if($data['email']){
+             if (!filter_var($data['email'],FILTER_VALIDATE_EMAIL)){
+                $errors['email'] = 'wrong email';
+             }
+        
+        }
 
         return $errors;
 
@@ -192,6 +198,11 @@ function form($data,$errors,){
     <?= isset($errors['phone_number'])?"<span>{$errors['phone_number']}</span>":'' ?>
     <br><br>
 
+    <label>Email:</label>
+    <input name="email" value="<?= $data['email'] ?>" type="text"><br>
+    <?= isset($errors['email'])?"<span>{$errors['email']}</span>":'' ?>
+    <br><br>
+
     <label>Penalty: </label>
     <input name="penalty" value="<?= $data['penalty'] ?>" type="number"><br>
     <?= isset($errors['penalty'])?"<span>{$errors['penalty']}</span>":'' ?>
@@ -209,6 +220,7 @@ function form($data,$errors,){
             'reader_name' => isset($_POST['reader_name'])? $_POST['reader_name'] : '',
             'address' => isset($_POST['address'])? $_POST['address'] : '',
             'phone_number' => isset($_POST['phone_number'])? $_POST['phone_number'] : '',
+            'email' => isset($_POST['email'])? $_POST['email'] : '',
             'penalty'=>isset($_POST['penalty'])? $_POST['penalty'] : '',
         ];
         return $data;
@@ -260,6 +272,7 @@ function form($data,$errors,){
                     'reader_name' => '',
                     'address' =>'',
                     'phone_number' => '',
+                    'email' => '',
                     'penalty'=> '',];
                     form($data,$errors);
                 }

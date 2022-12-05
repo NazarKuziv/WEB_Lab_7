@@ -41,6 +41,7 @@ if ($readers) {
             echo "<th>Name</th>";
             echo "<th>Address</th>";
             echo "<th>Phone_number</th>";
+            echo "<th>Email</th>";
             echo "<th>Penalty</th>";
             echo "<th></th>";
             echo "<th></th>";
@@ -52,6 +53,7 @@ if ($readers) {
             echo "<td>{$reader['reader_name']}</td>"; 
             echo "<td>{$reader['address']}</td>";
             echo "<td>{$reader['phone_number']}</td>";
+            echo "<td>{$reader['email']}</td>";
             echo "<td>{$reader['penalty']}</td>";
             echo "<td><a href='editReader.php?id={$reader['reader_id']}'>Edit</a></td>";
             echo "<td><a href='delete.php?id={$reader['reader_id']}&table=readers&col=reader_id&page=readers.php' onclick='loadmessage()'>Delete</a></td>";

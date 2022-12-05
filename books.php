@@ -50,7 +50,7 @@ if ($books) {
             echo "<th>Author</th>";
             echo "<th>Genre</th>";
             echo "<th>Publisher</th>";
-            echo "<th>language</th>";
+            echo "<th>Language</th>";
             echo "<th>Publish_Date</th>";
             echo "<th>Num Of Copies</th>";
             echo "<th>In Stock</th>";

@@ -205,6 +205,7 @@ $data['sort_by'] = isset($_GET['sort_by'])? $_GET['sort_by'] : '';
     <div id="site_content">
       <div class="sidebar">
         <a href="editIL.php?id="><h3>[Add Issuance]</h3></a>
+        <a href="news.php"><h3>[Send Newsletter]</h3></a>
         
         <h3>Filters</h3>
         <?php display_filter();?>
