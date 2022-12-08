@@ -60,13 +60,13 @@ function get_text(){
     $sql = "SELECT * FROM books  LEFT JOIN publishers ON books.publisher_id = publishers.publisher_id  ORDER BY book_id DESC LIMIT 1;";
     $statement = $pdo->query($sql);
     $books= $statement->fetchAll(PDO::FETCH_ASSOC);
-    $text = "Hello Friend,\nWes have a new book:\n";
+    $text = "Hello Friend,\nWes have a new book:\n\n";
     foreach($books as $b){
         $text = $text."Title: ".$b['title'];
        
         $authors = select_from("authors_books","authors",$b['book_id']);
         if($authors){
-            $text = $text."Author(s): ";
+            $text = $text."\nAuthor(s): ";
             foreach($authors as $a){
                 if($a){
                     $text = $text." ".$a['author_name']." ";
@@ -86,7 +86,7 @@ function get_text(){
         }
 
         $text = $text."\nPublisher: ".$b['publisher_name']."\n";
-        $text = $text."Language: ".$b['language']."\n";
+        $text = $text."Language: ".$b['language']."\n\n";
     }
     $text = $text."If you are interested in the book, come to us and takes it.\n(Address: 202 E Main St, Dundee, FL 33838, United States)\nGood  luck!";
     return $text;

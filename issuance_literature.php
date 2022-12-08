@@ -31,6 +31,13 @@ $pdo = require('db/connect.php');
 if(!$pdo){
     die();
 }
+function select_from($id){
+    global $pdo;
+
+    $sql = "SELECT * FROM authors_books INNER JOIN authors ON  authors_books.authors = authors.author_id WHERE books = $id";   
+    $statement = $pdo->query($sql);
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
 
 function Print_Table($issuance_literature){
 
@@ -56,7 +63,12 @@ function Print_Table($issuance_literature){
             echo "<td>{$k['reader_name']}</td>";
             echo "<td>{$k['employee_name']}</td>";
             echo "<td>{$k['title']}</td>";
-            echo "<td>{$k['author_name']}</td>";
+            echo "<td>";
+            $authors = select_from($k['book_id']);
+            foreach($authors as $a){
+                echo " ".$a['author_name']." ";
+            } 
+            echo "</td>";
             echo "<td>{$k['issuance_date']}</td>";
             echo "<td>{$k['return_date']}</td>";
             echo "<td><a href='editIL.php?id={$k['id']}'>Edit</a></td>";
@@ -127,8 +139,6 @@ function get_issuance_literature(){
     INNER JOIN employees ON issuance_literature.employee_id = employees.employee_id 
     INNER JOIN books ON issuance_literature.book_id = books.book_id 
     LEFT JOIN publishers ON books.publisher_id = publishers.publisher_id 
-    INNER JOIN authors_books ON books.book_id = authors_books.books 
-    INNER JOIN authors ON authors_books.authors = authors.author_id 
     $where $order;";
     
     $statement = $pdo->query($sql);
