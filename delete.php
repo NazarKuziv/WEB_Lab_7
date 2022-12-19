@@ -21,6 +21,7 @@ try{
        
     }  
    
+   
     $sql = "DELETE FROM {$table} WHERE {$_GET['col']} = :id";
     $smt = $pdo->prepare($sql);
     $smt->execute([':id'=>$id]);

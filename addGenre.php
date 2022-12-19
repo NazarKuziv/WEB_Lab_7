@@ -44,14 +44,14 @@ function Print_Table(){
         echo "<tr>";
                 echo "<th>ID</th>";
                 echo "<th>Name</th>";  
-                echo "<th></th>";
+                // echo "<th></th>";
         echo "<tr>" ;
        
         foreach ($genres as $genre) {
             echo "<tr>";
                 echo "<td>{$genre['genre_id']}</td>"; 
                 echo "<td>{$genre['genre_name']}</td>";
-                echo "<td><a href='delete.php?id={$genre['genre_id']}&table=genres&col=genre_id&page=addGenre.php' onclick='loadmessage()'>Delete</a></td>";
+                // echo "<td><a href='delete.php?id={$genre['genre_id']}&table=genres&col=genre_id&page=addGenre.php' onclick='loadmessage()'>Delete</a></td>";
                   
             echo "<tr>" ;
         }

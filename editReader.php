@@ -35,7 +35,7 @@ function get_by_id($id){
 
 function get_by_phone($phone){
     global $pdo;
-    $sql = "SELECT phone_number FROM readers WHERE phone_number = $phone ORDER BY phone_number DESC LIMIT 1; ";
+    $sql = "SELECT * FROM readers WHERE phone_number = $phone ORDER BY phone_number DESC LIMIT 1;";
     $statement = $pdo->query($sql);
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -45,7 +45,7 @@ function Print_Table(){
                 echo "<th>ID</th>";
                 echo "<th>Name</th>";
                 echo "<th>Country</th>";           
-                echo "<th></th>";
+                // echo "<th></th>";
         echo "<tr>" ;
        
         foreach ($authors as $author) {
@@ -53,7 +53,7 @@ function Print_Table(){
                 echo "<td>{$author['author_id']}</td>"; 
                 echo "<td>{$author['author_name']}</td>";
                 echo "<td>{$author['country']}</td>";
-                echo "<td><a href='delete.php?id={$author['author_id']}&table=authors&col=author_id&page=addAuthor.php' onclick='loadmessage()'>Delete</a></td>";
+                // echo "<td><a href='delete.php?id={$author['author_id']}&table=authors&col=author_id&page=addAuthor.php' onclick='loadmessage()'>Delete</a></td>";
                   
             echo "<tr>" ;
         }
